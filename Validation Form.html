@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>Validation Form</title>
+<link rel="stylesheet" href="style.css">
+
+
+<body>
+
+<div class="heading">
+<h1>Validation Form</h1>
+</div>
+<div class="container">
+<form autocomplete="off" onsubmit="return validation()">
+
+<label>Username</label></br>
+<input type="text" class="username" id="user" name="username" placeholder="Enter Your Username"></br>
+<span id="erruser" class="erruser"></span></br>
+
+<label>Email id</label></br>
+<input class="email" type="text" id="email" name="email" placeholder="Enter Your Email Id"></br>
+<span id="erremail" class="erremail"></span></br>
+
+<label>Password</label></br>
+<input class="pass"type="password" id="pass" name="password" placeholder="Enter Your password"></br>
+<span id="errpass" class="errpass" ></span></br>
+
+<label>Confirm Password</label></br>
+<input class="confirmpass"type="password" id="confirmpass" name="confirmpassword" placeholder="Confirm Your password"></br>
+<span id="errcnfrmpass" class="errcnfrmpass"></span></br>
+
+
+
+<label>Mobile Number</label></br>
+<input class="mobile" type="text" id="mobile" name="mobile" placeholder="Enter Your Mobile Number"></br>
+<span id="errmobile" class="errmobile"></span></br>
+
+<input class="submit" type="submit" name="submit"value="Submit"></input>
+
+
+<input class="submit" type="reset" name="reset"value="Reset"></input>
+
+</div>
+</div>
+</form>
+
+
+<script>
+
+
+function validation(){
+var user= document.getElementById("user").value;
+var pass= document.getElementById("pass").value;
+var confirmpass= document.getElementById("confirmpass").value;
+var email= document.getElementById("email").value;
+var mobile=document.getElementById("mobile").value;
+var regx=/^([a-z A-Z 0-9]+)@([a-z A-Z 0-9]+).([A-Z{2-20}])$/;
+if(user==""){
+document.getElementById("erruser").innerHTML="**Please Enter Username";
+return false;
+}
+if((user.length<=4)||(user.length>20)){
+document.getElementById("erruser").innerHTML="**Username should be below 4 to 20 words";
+return false;
+}
+if(!isNaN(user)){
+document.getElementById("erruser").innerHTML="**Only Characters Are Allowed";
+return false;
+}
+if(regx.test(email))
+{
+document.getElementById("erremail").innerHTML="**Please Enter valid Email id";
+return false;
+
+}
+if(email==""){
+document.getElementById("erremail").innerHTML="**Please Enter Email id";
+return false;
+}
+
+
+if(pass==""){
+document.getElementById("errpass").innerHTML="**Please Enter Password";
+return false;
+}
+if((pass.length<=4)||(pass.length>20)){
+document.getElementById("errpass").innerHTML="**Password should be below 4 to 20 words";
+return false;
+}
+if(pass!=confirmpass){
+document.getElementById("errpass").innerHTML="**Password Does not matched";
+return false;
+
+if(confirmpass==""){
+document.getElementById("errcnfrmpass").innerHTML="**Please Confirm password";
+return false;
+}
+
+}
+if(mobile==""){
+document.getElementById("errmobile").innerHTML="**Please Enter Mobile Number";
+return false;
+}
+if(isNaN(mobile)){
+document.getElementById("errmobile").innerHTML="**Please Enter Valid Mobile Number";
+return false;
+}
+if(mobile.length!==10){
+document.getElementById("errmobile").innerHTML="**Mobile number should be of 10 digits";
+return false;
+}
+alert("your form has been submitted succesfully");
+
+}
+</script>
+</body>
+</html>
